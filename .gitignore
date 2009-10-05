@@ -1,0 +1,8 @@
+.DS_Store
+.svn
+bin
+combined build
+max build
+p5 build
+p5 dist
+.project

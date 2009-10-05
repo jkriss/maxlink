@@ -1,0 +1,115 @@
+<project name="MaxLink" default="install" basedir=".">
+    <description>
+		builds maxlink classes and copies to Max and Processing locations
+    </description>
+  <!-- set global properties for this build -->
+  <property name="max-src" location="Classes for Max"/>
+  <property name="p5-src" location="Processing Library"/>
+  <property name="build" location="build"/>
+  <property name="max-build" location="max build"/>
+  <property name="p5-build" location="p5 build"/>
+  <property name="combined-build" location="combined build"/>
+  <property name="dist"  location="dist"/>
+  <property name="p5-dist"  location="p5 dist"/>
+  <property name="max-dist"  location="max dist"/>
+  
+  <property name="p5-home" location="/Applications/Processing 97"/>
+  <property name="max-home" location="/Library/Application Support/Cycling '74/java/classes"/>
+
+	<property name="full-dist" location="Full Distribution"/>
+	<property name="dist-resources" location="Static Resources"/>
+	  	
+  <target name="init">
+    <!-- Create the time stamp -->
+    <tstamp/>
+    <!-- Create the build directory structure used by compile -->
+    <mkdir dir="${max-build}"/>
+    <mkdir dir="${p5-build}"/>
+    <mkdir dir="${combined-build}"/>
+  </target>
+
+  <target name="compile-max" depends="init"
+        description="compile the source for max classes" >
+    <!-- Compile the java code from ${src} into ${build} -->
+    <javac srcdir="${max-src}" destdir="${max-build}"/>
+  </target>
+  
+  <target name="compile-p5" depends="init"
+        description="compile the source for max classes" >
+    <!-- Compile the java code from ${src} into ${build} -->
+    <javac srcdir="${p5-src}" destdir="${p5-build}"/>
+    <javac srcdir="${max-src}" destdir="${max-build}" classpath="${p5-build}"/>
+  </target>
+  
+  <target name="install" depends="p5-install, max-install" 
+	description="install files for Processing and Max">
+  
+  </target>
+
+  <target name="p5-install" depends="dist"
+	description="copy files to p5 library folder">
+	<copy todir="${p5-home}/libraries/maxlink">
+    <fileset dir="${p5-dist}"/>
+	  </copy>
+  </target>
+
+  <target name="max-install" depends="compile-max"
+	description="copy files to max java folder">
+	<copy todir="${max-home}">
+    <fileset dir="${max-build}"/>
+	  </copy>
+  </target>
+
+  <target name="dist" depends="compile-p5"
+        description="generate the distribution" >
+    <!-- Create the distribution directory -->
+    <mkdir dir="${p5-dist}"/>
+    <jar jarfile="${p5-dist}/library/maxlink.jar" basedir="${p5-build}"/>
+  </target>
+	
+  <target name="full-jar" depends="compile-max,compile-p5" description="make full jar">
+  	<copy todir="${combined-build}">
+  		<fileset dir="${max-build}"/>
+  		<fileset dir="${p5-build}"/>
+  	</copy>
+	<jar jarfile="${max-build}/maxlink.jar" basedir="${combined-build}"/>
+  </target>
+	
+  <target name="full-dist" depends="dist"
+	 	description="build for full distribution">
+  
+  	<copy todir="${full-dist}">
+  	    <fileset dir="${max-build}"/>
+  	</copy>
+
+  	<copy todir="${full-dist}">
+  	    <fileset dir="${p5-build}"/>
+  	</copy>
+  	
+  	<copy todir="${full-dist}">
+  	    <fileset dir="${dist-resources}"/>
+  	</copy>
+  
+  </target>
+  	
+  <target name="zip" depends="full-dist"
+  		description="create final zip for distribution">
+  	<zip destfile="${full-dist}/maxlink-current.zip"
+  	       basedir="${full-dist}"
+  	       excludes="maxlink-current.zip"
+  	  />
+  </target>
+
+  <target name="export-html">
+	<copy todir="/Users/jesse/Sites/jklabs.net/maxlink">
+  	    <fileset dir="html"/>
+  	</copy>
+  </target>
+
+  <target name="clean"
+        description="clean up" >
+    <!-- Delete the ${build} and ${dist} directory trees -->
+    <delete dir="${build}"/>
+    <delete dir="${dist}"/>
+  </target>
+</project>

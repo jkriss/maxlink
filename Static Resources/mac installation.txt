@@ -1,0 +1,35 @@
+:: MaxLink 0.33 installation instructions for Mac OS X ::
+
+
+:: For Processing ::
+
+   Drag the "Library-MaxLink" folder into your Processing examples folder
+      (/Applications/processing-0085/examples/).
+		
+   Drag the "maxlink" folder into your Processing libraries folder
+      (/Applications/processing-00xx/libraries).
+
+
+:: For Max/MSP 4.5+ ::
+
+   Drag the "jk" folder into the /Library/Application Support/Cycling '74/java/classes folder.
+		
+   Drag the "p5-sketches" folder into the /Library/Application Support/Cycling '74/ folder.	
+				
+   Add the line
+
+      max.dynamic.jar.dir "/Library/Application Support/Cycling '74/p5-sketches" 
+
+      to your max.java.config.txt file (in /Library/Application Support/Cycling '74/java).
+
+
+Restart both apps.  
+
+If you have a firewall running, enable network traffic on port 7474.
+
+Check out the Processing examples from File:Sketchbook:Examples:Library-MaxLink.  Corresponding Max patches can be found in the "example max patches" folder.
+
+It is no longer necessary to copy files into each sketch's code folder -- just add the library from the Processing application from Sketch:Import Library:maxlink.
+
+
+More info: http://jklabs.net/maxlink/

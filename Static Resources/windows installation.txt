@@ -1,0 +1,35 @@
+:: MaxLink 0.33 installation instructions for Windows XP ::
+
+:: For Processing ::
+
+   Drag the "Library-MaxLink" folder into your Processing examples folder
+      (C:\Program Files\processing-xxxx\examples\).
+		
+   Drag the "maxlink" folder into your Processing libraries folder
+      (C:\Program Files\processing-xxxx\libraries\).
+
+
+:: For Max/MSP 4.5+ ::
+
+   Drag the "jk" folder into the C:\Program Files\Common Files\Cycling '74\java\classes folder.
+		
+   Drag the "p5-sketches" folder into the C:\Program Files\Common Files\Cycling '74\ folder.	
+				
+   Add the line
+
+      max.dynamic.jar.dir "C:\Program Files\Common Files\Cycling '74\p5-sketches" 
+
+      to your max.java.config.txt file (in C:\Program Files\Common Files\Cycling '74\java\).
+
+
+
+Restart both apps.  
+
+If you have a firewall running, enable network traffic on port 7474.
+
+Check out the Processing examples from File:Sketchbook:Examples:Library-MaxLink.  Corresponding Max patches can be found in the "example max patches" folder.
+
+It is no longer necessary to copy files into each sketch's code folder -- just add the library from the Processing application from Sketch:Import Library:maxlink.
+
+
+More info: http://jklabs.net/maxlink/

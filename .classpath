@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="/Applications/Max5 Runtime/Cycling &apos;74/java/lib/max.jar"/>
+	<classpathentry kind="src" path="Processing Library"/>
+	<classpathentry kind="src" path="Classes for Max"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
