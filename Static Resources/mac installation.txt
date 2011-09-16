@@ -12,15 +12,15 @@
 
 :: For Max/MSP 4.5+ ::
 
-   Drag the "jk" folder into the /Library/Application Support/Cycling '74/java/classes folder.
+   Drag the "jk" folder into the /Applications/MaxMSP 4.6/Cycling '74/java/classes folder.
 		
-   Drag the "p5-sketches" folder into the /Library/Application Support/Cycling '74/ folder.	
+   Drag the "p5-sketches" folder into the //Applications/MaxMSP 4.6/Cycling '74/ folder.	
 				
    Add the line
 
-      max.dynamic.jar.dir "/Library/Application Support/Cycling '74/p5-sketches" 
+      max.dynamic.jar.dir "/Applications/MaxMSP 4.6/Cycling '74/Cycling '74/p5-sketches" 
 
-      to your max.java.config.txt file (in /Library/Application Support/Cycling '74/java).
+      to your max.java.config.txt file (in /Applications/MaxMSP 4.6/Cycling '74/Cycling '74/java).
 
 
 Restart both apps.  
